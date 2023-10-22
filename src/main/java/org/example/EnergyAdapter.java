@@ -1,13 +1,18 @@
 package org.example;
 
-public class EnergyAdapter extends ElectricTrain{
-    private SteamTrain steamTrain;
+public class EnergyAdapter implements Energy {
+    private AdvancedAdapter adapter;
 
-    public EnergyAdapter(SteamTrain steamTrain) {
-        this.steamTrain = steamTrain;
+    public EnergyAdapter( AdvancedAdapter adapter) {
+        this.adapter = adapter;
     }
 
-    public int getEnergyCapacity() {
-        return steamTrain.getCoalCapacity() * 8;
+    public void setAdapter(AdvancedAdapter adapter) {
+        this.adapter = adapter;
+    }
+
+    public void getEnergyCapacity() {
+        adapter.showSteam();
+        adapter.showElectric();
     }
 }

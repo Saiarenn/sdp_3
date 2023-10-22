@@ -1,13 +1,18 @@
 package org.example;
 
-public class Trip {
-    private int neededEnergy;
+public class Trip implements Energy{
+    private EnergyAdapter adapter;
 
-    public Trip(int energy) {
-        this.neededEnergy = energy;
+    public Trip(AdvancedAdapter advancedAdapter) {
+        this.adapter = new EnergyAdapter(advancedAdapter);
     }
 
-    public String isEnergyEnough(ElectricTrain train) {
-        return neededEnergy <= train.getEnergyCapacity() ? "Train suits to this trip" : "Need train with more energy capacity";
+    public void setAdapter(AdvancedAdapter advancedAdapter) {
+        this.adapter = new EnergyAdapter(advancedAdapter);
+    }
+
+    @Override
+    public void getEnergyCapacity() {
+        adapter.getEnergyCapacity();
     }
 }
